@@ -1,0 +1,17 @@
+version: '2.1'
+services:
+    web:
+      build: ./dodemo/                 
+      ports:
+        - "80:9080"       
+      depends_on:
+        - sqlserver         
+    sqlserver:
+      ports:
+        - 3306:3306
+      build: ./mysqlinit/
+      environment:
+        MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+        MYSQL_USER: "root"
+        MYSQL_PASSWORD:
+
